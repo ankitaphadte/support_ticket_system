@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Ticket{% endblock %}
+
+{% block body %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-7 col-md-9">
+
+            <div class="card border-0 shadow">
+
+                <div class="card-body p-4 p-md-5">
+
+                    <div class="mb-4">
+                        <h2 class="fw-bold mb-2">
+                            Edit Ticket
+                        </h2>
+
+                        <p class="text-muted mb-0">
+                            Update the details of ticket #{{ ticket.id }}.
+                        </p>
+                    </div>
+
+                    {{ form_start(ticketForm) }}
+
+                        <div class="mb-3">
+                            {{ form_label(ticketForm.title) }}
+
+                            {{ form_widget(ticketForm.title, {
+                                'attr': {'class': 'form-control'}
+                            }) }}
+
+                            {{ form_errors(ticketForm.title) }}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ form_label(ticketForm.description) }}
+
+                            {{ form_widget(ticketForm.description, {
+                                'attr': {'class': 'form-control'}
+                            }) }}
+
+                            {{ form_errors(ticketForm.description) }}
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                {{ form_label(ticketForm.category) }}
+
+                                {{ form_widget(ticketForm.category, {
+                                    'attr': {'class': 'form-select'}
+                                }) }}
+
+                                {{ form_errors(ticketForm.category) }}
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                {{ form_label(ticketForm.priority) }}
+
+                                {{ form_widget(ticketForm.priority, {
+                                    'attr': {'class': 'form-select'}
+                                }) }}
+
+                                {{ form_errors(ticketForm.priority) }}
+
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+
+                            <a
+                                href="{{ path('app_ticket_show', {
+                                    'id': ticket.id
+                                }) }}"
+                                class="btn btn-outline-secondary">
+                                Cancel
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary">
+                                Update Ticket
+                            </button>
+
+                        </div>
+
+                    {{ form_end(ticketForm) }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

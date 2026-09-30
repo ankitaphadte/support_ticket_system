@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2>
+                Welcome, {{ app.user.firstName }}!
+            </h2>
+
+            <p class="text-muted">
+                Manage your support requests from here.
+            </p>
+        </div>
+
+        <a href="{{ path('app_logout') }}"
+           class="btn btn-outline-danger">
+            Logout
+        </a>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        Create Ticket
+                    </h5>
+
+                    <p class="card-text">
+                        Need help? Create a new support request.
+                    </p>
+
+                    <a href="{{ path('app_ticket_new') }}"
+                       class="btn btn-primary">
+                        Create New Ticket
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+
+                    <h5 class="card-title">
+                        My Tickets
+                    </h5>
+
+                    <p class="card-text">
+                        View and track your support requests.
+                    </p>
+
+                    <a href="{{path('app_ticket_list')}}"
+                       class="btn btn-secondary">
+                        View My Tickets
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="card mt-4">
+
+        <div class="card-header">
+            My Account
+        </div>
+
+        <div class="card-body">
+
+            <p>
+                <strong>Name:</strong>
+                {{ app.user.firstName }} {{ app.user.lastName }}
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                {{ app.user.email }}
+            </p>
+
+            <p>
+                <strong>Phone:</strong>
+                {{ app.user.phone }}
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
